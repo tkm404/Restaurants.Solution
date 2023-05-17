@@ -19,8 +19,8 @@ namespace Restaurants.Controllers
     public ActionResult Index()
     {
       List<Restaurant> model = _db.Restaurant
-                                            .Include(restaurant => restaurant.Cuisine)
-                                            .ToList();
+                                  .Include(restaurant => restaurant.Cuisine)
+                                  .ToList();
       return View(model);
     }
 

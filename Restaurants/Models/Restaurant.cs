@@ -6,6 +6,7 @@ namespace Restaurants.Models
   {
     public int CuisineId { get; set; }
     public Cuisine Cuisine { get; set; }
+    public int RestaurantId { get; set; }
     public string Name { get; set; }
     public int PriceTier { get; set; }
     public string Style { get; set; }
