@@ -28,8 +28,8 @@ namespace Restaurants.Controllers
     public ActionResult Create(Cuisine cuisine)
     {
         _db.Cuisine.Add(cuisine);
-      _db.SaveChanges();
-      return RedirectToAction("Index");
+        _db.SaveChanges();
+        return RedirectToAction("Index");
     }
     public ActionResult Details(int id)
     {

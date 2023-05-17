@@ -14,15 +14,15 @@ namespace Restaurants.Models
     public int Alcohol { get; set; }
 
 
-    public Restaurant(string name, string priceTier, string style, int smoking, int alcohol)
-    {
-      Name = name;
-      PriceTier = priceTier;
-      Style = style;
-      Smoking = smoking;
-      Alcohol = alcohol; 
+    // public Restaurant(string name, string priceTier, string style, int smoking, int alcohol)
+    // {
+    //   Name = name;
+    //   PriceTier = priceTier;
+    //   Style = style;
+    //   Smoking = smoking;
+    //   Alcohol = alcohol; 
     
-    }
+    // }
 
   }
 }

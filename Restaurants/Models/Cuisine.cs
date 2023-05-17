@@ -7,12 +7,6 @@ namespace Restaurants.Models
     public int CuisineId { get; set; }
     public string Type { get; set; }
     public List<Restaurant> Restaurants { get; set; }
-  
-
-    public Cuisine(string type)
-    {
-    Type = type;
-    }
 
   }
 }
