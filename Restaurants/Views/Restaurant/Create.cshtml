@@ -15,14 +15,25 @@
 @Html.TextBoxFor(model => model.Name)
 <br>
 <br>
-// dropdown
-@Html.LabelFor(model => model.PriceTier)
-@Html.TextBoxFor(model => model.PriceTier)
+<label for="priceTier"> Price Tier </label>
+<select name="priceTier" id="priceTier">How Expensive is it?
+  <option>Tier 1 (affordable)</option>
+  <option>Tier 2 (moderately affordable)</option>
+  <option>Tier 3 (not affordable)</option>
+  <option>Tier 4 (take out a loan)</option>
+</select>
 <br>
 <br>
-//dropdown
-@Html.LabelFor(model => model.Style)
-@Html.TextBoxFor(model => model.Style)
+<label for="style"> Restaurant Style </label>
+<select name="style" id="style">
+  <option> Diner </option>
+  <option> Buffet </option>
+  <option> Drive-In </option>
+  <option> Bar </option>
+  <option> Gastropub </option>
+  <option> Fine Dining </option>
+  <option> Celebrity </option>
+</select>
 <br>
 <br>
 @Html.LabelFor(model => model.Smoking)

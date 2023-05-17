@@ -8,13 +8,13 @@ namespace Restaurants.Models
     public Cuisine Cuisine { get; set; }
     public int RestaurantId { get; set; }
     public string Name { get; set; }
-    public int PriceTier { get; set; }
+    public string PriceTier { get; set; }
     public string Style { get; set; }
     public int Smoking { get; set; }
     public int Alcohol { get; set; }
 
 
-    public Restaurant(string name, int priceTier, string style, int smoking, int alcohol)
+    public Restaurant(string name, string priceTier, string style, int smoking, int alcohol)
     {
       Name = name;
       PriceTier = priceTier;
