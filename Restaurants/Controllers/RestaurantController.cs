@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Restaurants.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Restaurants.Controllers
 {
@@ -15,16 +16,33 @@ namespace Restaurants.Controllers
       _db = db;
     }
 
-    // public ActionResult Index()
-    // {
-    //   List<Category> model = _db.Restaurant.ToList();
-    //   return View(model);
-    // }
+    public ActionResult Index()
+    {
+      List<Restaurant> model = _db.Restaurant
+                                            .Include(restaurant => restaurant.Cuisine)
+                                            .ToList();
+      return View(model);
+    }
 
-    // public ActionResult Create()
+      public ActionResult Create()
+    {
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult Create(Restaurant restaurant)
+    {
+
+      _db.Restaurant.Add(restaurant);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+
+    // public ActionResult New()
     // {
-    //   return View();
-    // } 
+    //   ViewBag.Style = new SelectList(_db.Restaurant.Style, "Style", "Name")
+    // }
 
     // [HttpPost]
     // public ActionResult Create(Category category)

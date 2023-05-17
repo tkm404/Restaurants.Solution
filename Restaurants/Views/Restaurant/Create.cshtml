@@ -1,0 +1,37 @@
+@{
+  Layout = "_Layout";
+}
+@* @using Restaurants.Models *@
+
+@model Restaurants.Models.Restaurant
+
+
+<h2>Add a Restaurant:</h2>
+
+@using (Html.BeginForm())
+{
+<br>
+@Html.LabelFor(model => model.Name)
+@Html.TextBoxFor(model => model.Name)
+<br>
+<br>
+// dropdown
+@Html.LabelFor(model => model.PriceTier)
+@Html.TextBoxFor(model => model.PriceTier)
+<br>
+<br>
+//dropdown
+@Html.LabelFor(model => model.Style)
+@Html.TextBoxFor(model => model.Style)
+<br>
+<br>
+@Html.LabelFor(model => model.Smoking)
+@Html.TextBoxFor(model => model.Smoking)
+<br>
+<br>
+@Html.LabelFor(model => model.Alcohol)
+@Html.TextBoxFor(model => model.Alcohol)
+<br>
+<br>
+<input type="submit" value="Add restaurant!">
+}
