@@ -7,40 +7,50 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Restaurants.Controllers
 {
-  public class CuisineController : Controller
-  {
-    private readonly RestaurantsContext _db;
+    public class CuisineController : Controller
+    {
+        private readonly RestaurantsContext _db;
 
-    public CuisineController(RestaurantsContext db)
-    {
-      _db = db;
-    }
-    public ActionResult Index()
-    {
-        List<Cuisine> model = _db.Cuisine.ToList();
-      return View(model);
-    }
-    public ActionResult Create()
-    {
-      return View();
-    }
-    [HttpPost]
-    public ActionResult Create(Cuisine cuisine)
-    {
-      if (_db.Cuisine.Include(cuisine => cuisine.Type)
-      {
+        public CuisineController(RestaurantsContext db)
+        {
+            _db = db;
+        }
+        public ActionResult Index()
+        {
+            List<Cuisine> model = _db.Cuisine.ToList();
+            return View(model);
+        }
+        public ActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Create(Cuisine cuisine)
+        {
 
-      }
-        _db.Cuisine.Add(cuisine);
-        _db.SaveChanges();
-        return RedirectToAction("Index");
+          string type = cuisine.Type;
+          List<Cuisine> model = _db.Cuisine.ToList();
+          foreach (Cuisine cuisine1 in model)
+          {
+            if (type == cuisine1.Type)
+            {
+              return RedirectToAction("Index");
+            }
+            else
+            {
+            _db.Cuisine.Add(cuisine);
+            _db.SaveChanges();
+            }
+          }
+          return RedirectToAction("Index");
+
+        }
+        public ActionResult Details(int id)
+        {
+            Cuisine thisCuisine = _db.Cuisine
+                                        .Include(cuisine => cuisine.Restaurants)
+                                        .FirstOrDefault(cuisine => cuisine.CuisineId == id);
+            return View(thisCuisine);
+        }
     }
-    public ActionResult Details(int id)
-    {
-      Cuisine thisCuisine = _db.Cuisine
-                                  .Include(cuisine => cuisine.Restaurants)
-                                  .FirstOrDefault(cuisine => cuisine.CuisineId == id);
-      return View(thisCuisine);
-    }
-  }
 }
