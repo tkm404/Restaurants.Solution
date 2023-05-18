@@ -27,6 +27,10 @@ namespace Restaurants.Controllers
     [HttpPost]
     public ActionResult Create(Cuisine cuisine)
     {
+      if (_db.Cuisine.Include(cuisine => cuisine.Type)
+      {
+
+      }
         _db.Cuisine.Add(cuisine);
         _db.SaveChanges();
         return RedirectToAction("Index");
