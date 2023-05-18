@@ -3,3 +3,14 @@
 }
 
 <h1> Looks like someone wants to see a restaurant!</h1>
+
+@model Restaurants.Models.Restaurant
+
+<h2>Restaurant Details:</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+<h3>@Html.DisplayNameFor(model => model.Cuisine): @Html.DisplayFor(model => model.Cuisine.Type)</h3>
+
+<p>@Html.ActionLink("Edit Restaurant", "Edit", new { id = Model.RestaurantId})</p>
+<p>@Html.ActionLink("Delete Resataurant", "Delete", new { id = Model.RestaurantId})</p>
+<p>@Html.ActionLink("Back to All Restaurants", "Index")</p>

@@ -5,6 +5,12 @@
 
 @model Restaurants.Models.Restaurant
 
+<p><strong> STOP!</strong> Add a Cuisine before you add a restaurant!</p>
+<br>
+<p>OR ELSE...</p>
+<br>
+@Html.ActionLink("do this now.", "Create", "Cuisine")
+<br>
 
 <h2>Add a Restaurant:</h2>
 
@@ -44,5 +50,9 @@
 @Html.TextBoxFor(model => model.Alcohol)
 <br>
 <br>
+@Html.LabelFor(model => model.Cuisine)
+@Html.DropDownList("CuisineId")
 <input type="submit" value="Add restaurant!">
 }
+
+<p>@Html.ActionLink("All Restaurants", "Index")</p>

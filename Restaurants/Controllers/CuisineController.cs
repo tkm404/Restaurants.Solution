@@ -17,7 +17,7 @@ namespace Restaurants.Controllers
         }
         public ActionResult Index()
         {
-            List<Cuisine> model = _db.Cuisine.ToList();
+            List<Cuisine> model = _db.Cuisines.ToList();
             return View(model);
         }
         public ActionResult Create()
@@ -38,7 +38,7 @@ namespace Restaurants.Controllers
           // }
           // else
           // {
-          _db.Cuisine.Add(cuisine);
+          _db.Cuisines.Add(cuisine);
           _db.SaveChanges();
           // }
             return RedirectToAction("Index");
@@ -46,7 +46,7 @@ namespace Restaurants.Controllers
 
         public ActionResult Details(int id)
         {
-            Cuisine thisCuisine = _db.Cuisine
+            Cuisine thisCuisine = _db.Cuisines
                                         .Include(cuisine => cuisine.Restaurants)
                                         .FirstOrDefault(cuisine => cuisine.CuisineId == id);
             return View(thisCuisine);

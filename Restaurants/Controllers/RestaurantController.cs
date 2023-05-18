@@ -18,7 +18,7 @@ namespace Restaurants.Controllers
 
     public ActionResult Index()
     {
-      List<Restaurant> model = _db.Restaurant
+      List<Restaurant> model = _db.RestaurantSA
                                   .Include(restaurant => restaurant.Cuisine)
                                   .ToList();
       return View(model);
@@ -26,32 +26,44 @@ namespace Restaurants.Controllers
 
       public ActionResult Create()
     {
+      ViewBag.CuisineId = new SelectList(_db.Cuisines, "CuisineId", "Type");
       return View();
     }
 
     [HttpPost]
     public ActionResult Create(Restaurant restaurant)
     {
-
-      _db.Restaurant.Add(restaurant);
+      if (restaurant.CuisineId == 0)
+      {
+        return RedirectToAction("Create");
+      }
+      _db.RestaurantSA.Add(restaurant);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
 
   public ActionResult Edit(int id)
   {
-    Restaurant thisRestaurant = _db.Restaurant.FirstOrDefault(restaurant => restaurant.RestaurantId == id);
+    Restaurant thisRestaurant = _db.RestaurantSA.FirstOrDefault(restaurant => restaurant.RestaurantId == id);
+    ViewBag.CuisineId = new SelectList(_db.Cuisines, "CuisineId", "Type");
     return View(thisRestaurant);
   }
 
   [HttpPost]
   public ActionResult Edit(Restaurant restaurant)
   {
-    _db.Restaurant.Update(restaurant);
+    _db.RestaurantSA.Update(restaurant);
     _db.SaveChanges();
     return RedirectToAction("Index");
   }
 
+  public ActionResult Details(int id)
+  {
+    Restaurant thisRestaurant = _db.RestaurantSA
+                                    .Include(restaurant => restaurant.Cuisine)
+                                    .FirstOrDefault(restaurant => restaurant.RestaurantId == id);
+    return View(thisRestaurant);
+  }
     // public ActionResult New()
     // {
     //   ViewBag.Style = new SelectList(_db.Restaurant.Style, "Style", "Name")

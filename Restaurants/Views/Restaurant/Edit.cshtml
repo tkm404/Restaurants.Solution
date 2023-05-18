@@ -4,8 +4,13 @@
 
 @model Restaurants.Models.Restaurant
 
+<h2>You're on the Edit page, baby!</h2>
+
+<h4>Edit this Restaurant: @Html.DisplayFor(model => model.Name)</h4>
 @using (Html.BeginForm())
 {
+    @Html.HiddenFor(model => model.RestaurantId)
+
     @Html.LabelFor(model => model.Name)
     @Html.TextBoxFor(model => model.Name)
     <br>
@@ -34,7 +39,13 @@
     <br>
     @Html.LabelFor(model => model.Alcohol)
     @Html.TextBoxFor(model => model.Alcohol)
+    <br>
+    <br>
 
+    @Html.LabelFor(model => model.Cuisine)
+    @Html.DropDownList("CuisineId")
 
     <input type="submit" value="Edit restaurant!">
 }
+
+<p>@Html.ActionLink("All Restaurants", "Index")</p>

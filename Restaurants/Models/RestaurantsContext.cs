@@ -4,8 +4,8 @@ namespace Restaurants.Models
 {
   public class RestaurantsContext : DbContext
   {
-    public DbSet<Cuisine> Cuisine { get; set; }
-    public DbSet<Restaurant> Restaurant { get; set; }
+    public DbSet<Cuisine> Cuisines { get; set; }
+    public DbSet<Restaurant> RestaurantSA { get; set; }
 
     public RestaurantsContext(DbContextOptions options) : base(options) { }
   }
