@@ -7,7 +7,7 @@ namespace Restaurants.Models
     public int CuisineId { get; set; }
     public Cuisine Cuisine { get; set; }
     public int RestaurantId { get; set; }
-    public string Name { get; set; }
+    public string Name { get; set; } 
     public string PriceTier { get; set; }
     public string Style { get; set; }
     public int Smoking { get; set; }
@@ -20,8 +20,8 @@ namespace Restaurants.Models
     //   PriceTier = priceTier;
     //   Style = style;
     //   Smoking = smoking;
-    //   Alcohol = alcohol; 
-    
+    //   Alcohol = alcohol;
+    //   Restaurants.Add(this);
     // }
 
   }

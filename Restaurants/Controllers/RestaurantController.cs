@@ -38,6 +38,19 @@ namespace Restaurants.Controllers
       return RedirectToAction("Index");
     }
 
+  public ActionResult Edit(int id)
+  {
+    Restaurant thisRestaurant = _db.Restaurant.FirstOrDefault(restaurant => restaurant.RestaurantId == id);
+    return View(thisRestaurant);
+  }
+
+  [HttpPost]
+  public ActionResult Edit(Restaurant restaurant)
+  {
+    _db.Restaurant.Update(restaurant);
+    _db.SaveChanges();
+    return RedirectToAction("Index");
+  }
 
     // public ActionResult New()
     // {

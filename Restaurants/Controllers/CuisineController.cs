@@ -27,24 +27,23 @@ namespace Restaurants.Controllers
         [HttpPost]
         public ActionResult Create(Cuisine cuisine)
         {
-
-          string type = cuisine.Type;
-          List<Cuisine> model = _db.Cuisine.ToList();
-          foreach (Cuisine cuisine1 in model)
-          {
-            if (type == cuisine1.Type)
-            {
-              return RedirectToAction("Index");
-            }
-            else
-            {
-            _db.Cuisine.Add(cuisine);
-            _db.SaveChanges();
-            }
+        
+          // string type = cuisine.Type;
+          // Cuisine compareCuisine = _db.Cuisine
+          //                             // .Include(cuisine => cuisine.Type)
+          //                             .FirstOrDefault(cuisine => cuisine.Type == type);
+          // if (type == compareCuisine.Type)
+          // {
+          //   return RedirectToAction("Index");
+          // }
+          // else
+          // {
+          _db.Cuisine.Add(cuisine);
+          _db.SaveChanges();
+          // }
+            return RedirectToAction("Index");
           }
-          return RedirectToAction("Index");
 
-        }
         public ActionResult Details(int id)
         {
             Cuisine thisCuisine = _db.Cuisine
